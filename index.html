@@ -1,0 +1,373 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BellaTaste • Modern Restaurant Website Starter</title>
+  <meta name="description" content="BellaTaste is a modern, mobile‑first restaurant website template ready to customize, deploy, and flip." />
+  <meta name="keywords" content="restaurant website template, food menu, reservation form, starter site, flip website, small business" />
+  <meta name="author" content="Davinto" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="BellaTaste • Modern Restaurant" />
+  <meta property="og:description" content="Clean, elegant restaurant website starter with menu, gallery, and reservation form." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop" />
+  <meta property="og:url" content="https://your-domain.com" />
+  <meta name="theme-color" content="#101010" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🍽️</text></svg>">  <!-- JSON-LD: Restaurant Schema (edit details before flipping) -->  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "BellaTaste",
+    "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Flavor Street",
+      "addressLocality": "Your City",
+      "addressRegion": "Your State",
+      "postalCode": "000000",
+      "addressCountry": "NG"
+    },
+    "telephone": "+234 800 000 0000",
+    "servesCuisine": ["African", "Continental", "Seafood"],
+    "priceRange": "$$",
+    "openingHours": ["Mo-Su 10:00-22:00"],
+    "url": "https://your-domain.com",
+    "acceptsReservations": "True"
+  }
+  </script>  <style>
+    :root{
+      --bg:#0b0b0d; --card:#121218; --muted:#9aa2b1; --text:#f5f7fb; --brand:#ff7a59; --brand-2:#ffd166; --accent:#6ee7b7;
+      --radius:1.25rem; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0b0b0d 0%,#0e0e12 100%);color:var(--text);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1100px,92%);margin-inline:auto}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;border-radius:.9rem;border:1px solid #ffffff25;background:#ffffff10;backdrop-filter:blur(6px);transition:.25s;cursor:pointer}
+    .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#101010;border:none}
+    .chip{padding:.35rem .7rem;border-radius:999px;background:#ffffff10;border:1px solid #ffffff25;color:var(--muted);font-size:.85rem}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:40;background:rgba(11,11,13,.6);backdrop-filter:blur(10px);border-bottom:1px solid #ffffff15}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
+    .brand{display:flex;align-items:center;gap:.7rem;font-weight:700}
+    .brand-logo{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--brand),var(--brand-2));display:grid;place-items:center;box-shadow:var(--shadow)}
+    .brand span{font-family:"Playfair Display",serif;letter-spacing:.3px}
+    .nav a{opacity:.85;margin:0 .6rem}
+    .nav a:hover{opacity:1}
+
+    /* Hero */
+    .hero{position:relative;isolation:isolate}
+    .hero::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1526312426976-593c0a1a52d3?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;opacity:.25;z-index:-2}
+    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 20% 20%,#ff7a5922,transparent),radial-gradient(60% 60% at 100% 0%,#ffd16622,transparent)}
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;padding:5rem 0 3.5rem}
+    .title{font-family:"Playfair Display",serif;font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.1;margin:0}
+    .subtitle{color:var(--muted);margin:.9rem 0 1.6rem}
+    .badges{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem}
+    .card{background:linear-gradient(180deg,#13131a,#0f0f14);border:1px solid #ffffff14;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-card{padding:1rem}
+
+    /* Sections */
+    section{padding:3.5rem 0}
+    .section-title{font-family:"Playfair Display",serif;font-size:2rem;margin:0 0 .8rem}
+    .section-sub{color:var(--muted);margin:0 0 1.8rem}
+
+    /* Menu */
+    .filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.4rem}
+    .filters .btn{padding:.5rem .85rem}
+    .grid{display:grid;gap:1rem}
+    .menu-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .menu-card{padding:1rem;display:grid;grid-template-columns:64px 1fr;gap:1rem;align-items:center}
+    .menu-card img{width:64px;height:64px;object-fit:cover;border-radius:12px}
+    .menu-title{display:flex;justify-content:space-between;gap:.5rem;align-items:center}
+    .price{color:var(--accent);font-weight:600}
+
+    /* About */
+    .about{display:grid;grid-template-columns:1.1fr .9fr;gap:1.4rem;align-items:center}
+    .about img{border-radius:var(--radius)}
+
+    /* Gallery */
+    .gallery{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+    .gallery img{border-radius:1rem}
+
+    /* Testimonials */
+    .testi{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .quote{padding:1rem}
+    .quote p{color:#dfe3ea}
+
+    /* Reserve */
+    form{display:grid;gap:.9rem}
+    input,select,textarea{width:100%;padding:.9rem;background:#0c0c12;border:1px solid #ffffff22;border-radius:.7rem;color:var(--text)}
+    label{font-size:.9rem;color:var(--muted)}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+    /* Footer */
+    footer{border-top:1px solid #ffffff14;padding:2rem 0;color:#c8cfdb}
+    .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:1rem}
+    .foot a{color:#c8cfdb}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0;transform:translateY(16px);transition:.6s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media (max-width: 900px){
+      .hero-inner{grid-template-columns:1fr;gap:1rem;padding:4rem 0 2rem}
+      .about{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+      .foot{grid-template-columns:1fr}
+    }
+  </style></head>
+<body>
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="BellaTaste Home">
+        <span class="brand-logo">🍽️</span>
+        <span>BellaTaste</span>
+      </a>
+      <nav>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reserve">Reserve</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>  <!-- ===== Hero ===== -->  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="chip">Fine Dining • Casual Vibes</span>
+        <h1 class="title">Savor Flavors. Share Moments.</h1>
+        <p class="subtitle">Welcome to <strong>BellaTaste</strong>, where vibrant cuisine meets cozy ambience. Fresh ingredients, handcrafted dishes, unforgettable nights.</p>
+        <div class="badges">
+          <span class="chip">Open Daily</span>
+          <span class="chip">Vegan Options</span>
+          <span class="chip">Family Friendly</span>
+        </div>
+        <div class="actions">
+          <a href="#menu" class="btn primary">View Menu</a>
+          <a href="#reserve" class="btn" aria-label="Book a table">Book a Table</a>
+        </div>
+      </div>
+      <div class="card hero-card reveal">
+        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop" alt="Plated gourmet dish on a dark plate" style="border-radius:1rem;">
+      </div>
+    </div>
+  </section>  <!-- ===== Menu ===== -->  <section id="menu" class="container">
+    <h2 class="section-title">Our Menu</h2>
+    <p class="section-sub">Curated classics and seasonal specials. Filter by category.</p>
+    <div class="filters">
+      <button class="btn small" data-filter="all">All</button>
+      <button class="btn small" data-filter="starters">Starters</button>
+      <button class="btn small" data-filter="mains">Mains</button>
+      <button class="btn small" data-filter="desserts">Desserts</button>
+      <button class="btn small" data-filter="drinks">Drinks</button>
+    </div>
+    <div class="grid menu-grid" id="menuGrid">
+      <!-- Item -->
+      <article class="card menu-card reveal" data-cat="starters">
+        <img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?q=80&w=400&auto=format&fit=crop" alt="Bruschetta" />
+        <div>
+          <div class="menu-title"><h3>Bruschetta</h3><span class="price">₦3,500</span></div>
+          <p class="section-sub">Grilled bread, tomatoes, basil, olive oil.</p>
+        </div>
+      </article>
+      <article class="card menu-card reveal" data-cat="mains">
+        <img src="https://images.unsplash.com/photo-1604908176997-43162a2e1d49?q=80&w=400&auto=format&fit=crop" alt="Grilled Salmon" />
+        <div>
+          <div class="menu-title"><h3>Grilled Salmon</h3><span class="price">₦12,000</span></div>
+          <p class="section-sub">Citrus glaze, roasted veggies, herb butter.</p>
+        </div>
+      </article>
+      <article class="card menu-card reveal" data-cat="mains">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&auto=format&fit=crop" alt="Jollof Rice" />
+        <div>
+          <div class="menu-title"><h3>Smoky Jollof</h3><span class="price">₦6,500</span></div>
+          <p class="section-sub">Firewood flavor, fried plantain, grilled chicken.</p>
+        </div>
+      </article>
+      <article class="card menu-card reveal" data-cat="desserts">
+        <img src="https://images.unsplash.com/photo-1505253216365-9a9f0b4e3653?q=80&w=400&auto=format&fit=crop" alt="Chocolate Lava Cake" />
+        <div>
+          <div class="menu-title"><h3>Chocolate Lava Cake</h3><span class="price">₦4,500</span></div>
+          <p class="section-sub">Warm center, vanilla gelato, cocoa dust.</p>
+        </div>
+      </article>
+      <article class="card menu-card reveal" data-cat="drinks">
+        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6cf7?q=80&w=400&auto=format&fit=crop" alt="Signature Mocktail" />
+        <div>
+          <div class="menu-title"><h3>Sunset Mocktail</h3><span class="price">₦2,800</span></div>
+          <p class="section-sub">Pineapple, hibiscus, lime, ginger fizz.</p>
+        </div>
+      </article>
+      <article class="card menu-card reveal" data-cat="starters">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&auto=format&fit=crop" alt="Pepper Soup" />
+        <div>
+          <div class="menu-title"><h3>Catfish Pepper Soup</h3><span class="price">₦5,500</span></div>
+          <p class="section-sub">Spicy broth, scent leaves, local spices.</p>
+        </div>
+      </article>
+    </div>
+  </section>  <!-- ===== About ===== -->  <section id="about" class="container">
+    <div class="about">
+      <div class="reveal">
+        <h2 class="section-title">About BellaTaste</h2>
+        <p class="section-sub">Founded in 2025, BellaTaste celebrates seasonal ingredients and warm hospitality. Our chefs blend African favorites with global techniques to craft dishes that feel like home—elevated.</p>
+        <ul>
+          <li>• Farm‑fresh produce and sustainable sourcing</li>
+          <li>• Vegan, vegetarian, and gluten‑free options</li>
+          <li>• Private dining & catering on request</li>
+        </ul>
+        <div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap">
+          <span class="chip">Fast Wi‑Fi</span>
+          <span class="chip">Live Music Fridays</span>
+          <span class="chip">Kids’ Menu</span>
+        </div>
+      </div>
+      <img class="reveal" src="https://images.unsplash.com/photo-1541542684-4a77e9f4b5c1?q=80&w=1200&auto=format&fit=crop" alt="Restaurant interior with warm lighting" />
+    </div>
+  </section>  <!-- ===== Gallery ===== -->  <section id="gallery" class="container">
+    <h2 class="section-title">Gallery</h2>
+    <p class="section-sub">A taste of the BellaTaste experience.</p>
+    <div class="grid gallery">
+      <img class="reveal" src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=800&auto=format&fit=crop" alt="Pasta bowl" />
+      <img class="reveal" src="https://images.unsplash.com/photo-1495195134817-aeb325a55b65?q=80&w=800&auto=format&fit=crop" alt="Fresh salad" />
+      <img class="reveal" src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=800&auto=format&fit=crop" alt="Steak plate" />
+      <img class="reveal" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" alt="Restaurant table" />
+      <img class="reveal" src="https://images.unsplash.com/photo-1516683037151-9d7a3671e417?q=80&w=800&auto=format&fit=crop" alt="Dessert" />
+      <img class="reveal" src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop" alt="Cocktail" />
+    </div>
+  </section>  <!-- ===== Testimonials ===== -->  <section class="container" aria-label="Testimonials">
+    <h2 class="section-title">What Guests Say</h2>
+    <p class="section-sub">Real words that keep us inspired.</p>
+    <div class="testi" id="testi">
+      <blockquote class="card quote reveal">
+        <p>“The jollof is unreal—smoky, rich, and perfectly spiced. New favorite spot!”</p>
+        <cite>— Ada, Google Reviews</cite>
+      </blockquote>
+      <blockquote class="card quote reveal">
+        <p>“Cozy ambience and friendly staff. Our anniversary dinner was magical.”</p>
+        <cite>— Sola, TripAdvisor</cite>
+      </blockquote>
+      <blockquote class="card quote reveal">
+        <p>“Great vegan options that don’t feel like an afterthought. Highly recommend.”</p>
+        <cite>— Mira, Instagram</cite>
+      </blockquote>
+    </div>
+  </section>  <!-- ===== Reserve ===== -->  <section id="reserve" class="container">
+    <h2 class="section-title">Reserve a Table</h2>
+    <p class="section-sub">Walk‑ins welcome, reservations recommended on weekends.</p><!-- Netlify‑ready form (works after deploying to Netlify) -->
+<form name="reservation" method="POST" data-netlify="true">
+  <input type="hidden" name="form-name" value="reservation" />
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
+    <div>
+      <label for="date">Date</label>
+      <input id="date" name="date" type="date" required />
+    </div>
+    <div>
+      <label for="time">Time</label>
+      <input id="time" name="time" type="time" required />
+    </div>
+    <div>
+      <label for="guests">Guests</label>
+      <select id="guests" name="guests" required>
+        <option value="">Select</option>
+        <option>1</option><option>2</option><option>3</option><option>4</option>
+        <option>5</option><option>6</option><option>7+</option>
+      </select>
+    </div>
+    <div>
+      <label for="name">Full Name</label>
+      <input id="name" name="name" type="text" placeholder="Your Name" required />
+    </div>
+    <div>
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" type="tel" placeholder="0800 000 0000" required />
+    </div>
+    <div>
+      <label for="email">Email (optional)</label>
+      <input id="email" name="email" type="email" placeholder="you@example.com" />
+    </div>
+  </div>
+  <div>
+    <label for="notes">Notes</label>
+    <textarea id="notes" name="notes" rows="3" placeholder="Allergies, occasion, seating preference..."></textarea>
+  </div>
+  <button class="btn primary" type="submit">Send Reservation</button>
+</form>
+<p class="section-sub" style="margin-top:.6rem">Or call <a href="tel:+2348000000000">+234 800 000 0000</a></p>
+
+  </section>  <!-- ===== Contact ===== -->  <section id="contact" class="container">
+    <h2 class="section-title">Find Us</h2>
+    <p class="section-sub">123 Flavor Street, Your City • Open daily 10:00–22:00</p>
+    <div class="contact">
+      <div class="card reveal" style="padding:1rem">
+        <h3>Contact</h3>
+        <p class="section-sub">Phone: <a href="tel:+2348000000000">+234 800 000 0000</a><br>Email: <a href="mailto:hello@bellataste.com">hello@bellataste.com</a></p>
+        <h3>Hours</h3>
+        <p class="section-sub">Mon–Sun: 10:00 – 22:00</p>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem">
+          <a class="btn" href="#reserve">Book Now</a>
+          <a class="btn" href="#menu">See Menu</a>
+        </div>
+      </div>
+      <div class="card reveal" style="overflow:hidden">
+        <iframe title="Map" src="https://www.openstreetmap.org/export/embed.html?bbox=3.367%2C6.45%2C3.45%2C6.53&layer=mapnik" style="border:0;width:100%;height:100%" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>  <!-- ===== Footer ===== -->  <footer>
+    <div class="container foot">
+      <div>
+        <div class="brand"><span class="brand-logo">🍽️</span><span>BellaTaste</span></div>
+        <p class="section-sub">© <span id="year"></span> BellaTaste. Crafted by Davinto. All rights reserved.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <p class="section-sub"><a href="#menu">Menu</a> · <a href="#about">About</a> · <a href="#reserve">Reserve</a> · <a href="#contact">Contact</a></p>
+      </div>
+      <div>
+        <h4>Social</h4>
+        <p class="section-sub"><a href="#">Instagram</a> · <a href="#">Facebook</a> · <a href="#">TikTok</a></p>
+      </div>
+    </div>
+  </footer>  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menu filter
+    const buttons = document.querySelectorAll('[data-filter]');
+    const items = document.querySelectorAll('#menuGrid [data-cat]');
+    buttons.forEach(btn=>btn.addEventListener('click',()=>{
+      const f = btn.dataset.filter;
+      items.forEach(card=>{
+        card.style.display = (f==='all' || card.dataset.cat===f) ? 'grid' : 'none';
+      });
+    }));
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    },{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // (Optional) Simple testimonial auto-swap for small screens
+    let idx = 0; const quotes = [...document.querySelectorAll('#testi .quote')];
+    setInterval(()=>{
+      if(window.matchMedia('(max-width:700px)').matches && quotes.length>1){
+        quotes.forEach((q,i)=>q.style.display = i===idx? 'block':'none');
+        idx = (idx+1)%quotes.length;
+      } else { quotes.forEach(q=>q.style.display='block'); }
+    }, 3500);
+  </script>  <!--
+  ================= HOW TO CUSTOMIZE & FLIP =================
+  1) Replace brand name "BellaTaste" in title, header, footer.
+  2) Update JSON-LD schema above with real address, phone, domain.
+  3) Swap Unsplash images with client photos for extra authenticity.
+  4) Edit prices, dishes, categories in the Menu section.
+  5) Deploy to Netlify (
